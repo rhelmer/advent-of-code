@@ -1,7 +1,7 @@
 frequency = 0
 seen = {}
 
-file = io.open("day1-input.txt")
+file = io.open("input.txt")
 
 while true do
     for line in file:lines() do
