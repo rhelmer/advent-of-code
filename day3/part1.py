@@ -1,7 +1,7 @@
 from shapely.geometry import box
 import re
 
-p = re.compile('(?P<inches>#\d*) @ (?P<x>\d*),(?P<y>\d*): (?P<width>\d*)x(?P<height>\d*)')
+p = re.compile(r'(?P<inches>#\d*) @ (?P<x>\d*),(?P<y>\d*): (?P<width>\d*)x(?P<height>\d*)')
 
 f = open('test-input.txt')
 
