@@ -1,20 +1,31 @@
-from shapely.geometry import box
+from collections import defaultdict
+
 import re
 
 p = re.compile(r'(?P<inches>#\d*) @ (?P<x>\d*),(?P<y>\d*): (?P<width>\d*)x(?P<height>\d*)')
 
-f = open('test-input.txt')
+f = open('input.txt')
 
-boxes = []
+boxes = defaultdict(int)
 
 for line in f:
     m = p.match(line)
     if (m):
-        print(m.group('inches'), m.group('x'), m.group('y'), m.group('width'), m.group('height'))
         a = m.groupdict()
-
-        b = box(int(a['x']), int(a['y']), int(a['width']), int(a['height']))
-        print(b)
+        x = int(a['x'])
+        y = int(a['y'])
+        w = int(a['width'])
+        h = int(a['height'])
+        for dx in range(w):
+            for dy in range(h):
+                boxes[(x+dx, y+dy)] += 1
     else:
         print('could not parse:', line)
         exit(1)
+
+square_inches = 0
+for v in boxes.values():
+    if v >= 2:
+        square_inches += 1
+
+print(square_inches)
