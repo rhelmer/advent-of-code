@@ -2,7 +2,7 @@ from collections import defaultdict
 
 import re
 
-p = re.compile(r'(?P<inches>#\d*) @ (?P<x>\d*),(?P<y>\d*): (?P<width>\d*)x(?P<height>\d*)')
+p = re.compile(r'(?P<name>#\d*) @ (?P<x>\d*),(?P<y>\d*): (?P<width>\d*)x(?P<height>\d*)')
 
 f = open('input.txt')
 
